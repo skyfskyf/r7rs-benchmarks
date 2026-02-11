@@ -79,7 +79,7 @@ SYNTH_BENCHMARKS="equal bv2string"
 
 ALL_BENCHMARKS="$GABRIEL_BENCHMARKS $NUM_BENCHMARKS $KVW_BENCHMARKS $IO_BENCHMARKS $OTHER_BENCHMARKS $GC_BENCHMARKS $SYNTH_BENCHMARKS"
 
-ALL_SYSTEMS="bigloo bones chez chibi chicken cyclone femtolisp gambitc gauche gerbil guile ironscheme kawa larceny loko mit mosh picrin racket s7 s9fes sagittarius stklos tr7 ypsilon" # tinyscheme seems to run out of memory or time on *every* benchmark :-/
+ALL_SYSTEMS="bigloo bones chez chibi chicken cyclone femtolisp gambitc gauche gerbil grift guile ironscheme kawa larceny loko mit mosh picrin racket s7 s9fes sagittarius stklos tr7 ypsilon" # tinyscheme seems to run out of memory or time on *every* benchmark :-/
 # petite-chez  chickencsi
 # foment owllisp rhizome rscheme scheme48 vicare
 ################################################################
@@ -151,6 +151,7 @@ setup ()
     TR7I=${TR7I:-"tr7i"}
     VICARE=${VICARE:-"vicare"}
     YPSILON=${YPSILON:-"ypsilon"}
+    GRIFT_RUNNER=${GRIFT_RUNNER:-"grift-runner/target/release/grift-runner"}
 }
 
 setup
@@ -176,6 +177,7 @@ Usage: bench [-r runs] <system> <benchmark>
   gambitc          for GambitC Scheme
   gauche           for Gauche
   gerbil           for Gerbil Scheme
+  grift            for Grift
   guile            for Guile Scheme
   husk             for Husk
   ironscheme       for IronScheme
@@ -907,6 +909,18 @@ loko_exec ()
     time "$1" < "$2"
 }
 # -----------------------------------------------------------------------------
+# Definitions specific to Grift
+
+grift_comp ()
+{
+    :
+}
+
+grift_exec ()
+{
+    time "${GRIFT_RUNNER}" "$1" < "$2"
+}
+# -----------------------------------------------------------------------------
 
 ## Arg processing...
 if [ "$#" -lt 2 ]; then
@@ -1173,6 +1187,13 @@ for system in $systems ; do
                 EXTENSION="scm"
                 EXTENSIONCOMP="exe"
                 ;;
+
+        grift) NAME='Grift'
+               COMP=grift_comp
+               EXEC=grift_exec
+               EXTENSION="scm"
+               EXTENSIONCOMP="scm"
+               ;;
 
         husk) NAME='Husk'
               COMP=husk_comp

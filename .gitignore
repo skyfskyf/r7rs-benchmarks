@@ -6,3 +6,7 @@ out
 
 .dotnet
 .local/share/NuGet
+
+# Grift runner build artifacts
+grift-runner/target/
+results.Grift

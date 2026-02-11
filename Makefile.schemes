@@ -1,4 +1,4 @@
-all: results.Bigloo results.Bones results.Chez results.Chibi results.Chicken results.Cyclone results.Femtolisp results.GambitC results.Gauche results.Gerbil results.Guile results.IronScheme results.Kawa results.Larceny results.Loko results.MIT results.Mosh results.Picrin results.Racket results.S7 results.S9fES results.Sagittarius results.Stalin results.STklos results.TR7 results.Ypsilon
+all: results.Bigloo results.Bones results.Chez results.Chibi results.Chicken results.Cyclone results.Femtolisp results.GambitC results.Gauche results.Gerbil results.Grift results.Guile results.IronScheme results.Kawa results.Larceny results.Loko results.MIT results.Mosh results.Picrin results.Racket results.S7 results.S9fES results.Sagittarius results.Stalin results.STklos results.TR7 results.Ypsilon
 ## not relevant?
 # results.Petite-Chez results.ChickenCSI
 ## too slow / too little memory
@@ -61,6 +61,9 @@ results.GambitC:
 
 results.Gauche:
 	./bench gauche all
+
+results.Grift:
+	./bench grift all
 
 results.Guile:
 	./bench guile all
@@ -136,6 +139,8 @@ foment: results.Foment
 gambitc: results.GambitC
 
 gauche: results.Gauche
+
+grift: results.Grift
 
 guile: results.Guile
 
