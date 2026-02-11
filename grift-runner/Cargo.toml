@@ -8,7 +8,7 @@ name = "grift-runner"
 path = "src/main.rs"
 
 [dependencies]
-grift = { git = "https://github.com/skyfskyf/grift.git", branch = "meow", features = ["std"] }
+grift = { git = "https://github.com/skyfskyf/grift.git", branch = "meow", features = ["std"] }  # "meow" is grift's default/main branch
 
 [profile.release]
 opt-level = 3

@@ -5,7 +5,7 @@
   (syntax-rules ()
     ((import . rest) (begin))))
 
-;; Implementation name
+;; Implementation name (update version when upgrading grift dependency)
 (define (this-scheme-implementation-name) "grift-1.4.0")
 
 ;; Make values a first-class procedure (grift treats values as a special form)
