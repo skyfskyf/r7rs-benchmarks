@@ -1,0 +1,14 @@
+[package]
+name = "grift-runner"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "grift-runner"
+path = "src/main.rs"
+
+[dependencies]
+grift = { git = "https://github.com/skyfskyf/grift.git", branch = "meow", features = ["std"] }
+
+[profile.release]
+opt-level = 3
